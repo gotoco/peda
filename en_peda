@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 [0|1] enable|disable peda gdb framework" >&2
+  exit 1
+fi
+
+re='^[0-9]+$'
+if ! [[ $1 =~ $re ]] ; then
+   echo "error: Not a uns binary number" >&2; exit 1
+fi
+
+if [ $1 -eq 0 ]; then
+   echo "Disable Peda";
+   sed '/peda/d' ~/.gdbinit > ~/.gdbinit
+   exit;
+else
+   echo "Enable Peda"
+   echo "source ~/peda/peda.py" >> ~/.gdbinit
+   exit;
+fi
+
+#if [ $1 -z];
+#"source ~/peda/peda.py" >> ~/.gdbinit
