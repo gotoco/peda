@@ -1,4 +1,10 @@
 #!/bin/bash
+####
+# Sometimes peda exploit framework can be annoying this script allow 
+# easly to return to normal gdb (i.e. in case of system development)
+#
+# Usage: en_peda [0-disable|1-..enable]
+####
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 [0|1] enable|disable peda gdb framework" >&2
@@ -19,6 +25,3 @@ else
    echo "source ~/peda/peda.py" >> ~/.gdbinit
    exit;
 fi
-
-#if [ $1 -z];
-#"source ~/peda/peda.py" >> ~/.gdbinit
